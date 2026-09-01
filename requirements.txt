@@ -1,0 +1,12 @@
+# Stage 1: Face Identification Requirements
+# DeepFace library for face detection and embedding extraction
+deepface>=0.0.90
+
+# Image loading and processing
+opencv-python>=4.8.0
+
+# Numerical operations for vector embeddings
+numpy>=1.23.0
+
+# TensorFlow Keras compatibility for DeepFace models
+tf-keras>=2.15.0
