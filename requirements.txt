@@ -10,3 +10,11 @@ numpy>=1.23.0
 
 # TensorFlow Keras compatibility for DeepFace models
 tf-keras>=2.15.0
+
+# Stage 2: Web / Social Media Search Requirements
+# HTTP requests library for ImgBB and SerpApi endpoints
+requests>=2.31.0
+
+# Environment variable management (.env loader)
+python-dotenv>=1.0.0
+

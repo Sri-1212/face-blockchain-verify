@@ -1,16 +1,9 @@
 # HH Goa 2026 Task 3: Face Identification & Blockchain Verification
 
-## Stage 1: Face Identification
-
-This repository contains **Stage 1** of the Face Identification & Blockchain Verification system. 
-
-Stage 1 focuses exclusively on:
-1. Validating input images from the command line.
-2. Checking face presence using DeepFace.
-3. Generating a facial embedding vector using the **Facenet** model.
-4. Outputting embedding dimensions and informative status messages.
-
-> **Note:** Web search (SerpApi, imgbb) and Blockchain verification (Smart Contracts, Polygon) are reserved for subsequent stages and are intentionally omitted from Stage 1.
+## Stages Overview
+- **Stage 1: Face Identification** — DeepFace & Facenet embedding extraction (`src/face_module.py`).
+- **Stage 2: Web & Social Media Search** — ImgBB image hosting & SerpApi Google Lens reverse image search (`src/search_module.py`).
+- **Stage 3: Blockchain Verification** — Smart contract interaction & on-chain record lookup (`src/blockchain_module.py`).
 
 ---
 
@@ -20,14 +13,18 @@ Stage 1 focuses exclusively on:
 face-blockchain-verify/
 ├── src/
 │   ├── __init__.py           # Package initialization
-│   └── face_module.py        # Face detection and Facenet embedding extraction
+│   ├── face_module.py        # Stage 1: Face detection and Facenet embedding extraction
+│   ├── search_module.py      # Stage 2: ImgBB upload & SerpApi Google Lens reverse search
+│   ├── blockchain_module.py  # Stage 3: Blockchain verification (Upcoming)
+│   └── main.py               # Main CLI pipeline entry point (Upcoming)
 ├── test_images/              # Directory to store test sample images (.jpg, .png)
 │   └── .gitkeep
-├── .env.example              # Environment variables template (for future stages)
-├── .gitignore                # Git ignore rules for Python, cache, and weights
-├── requirements.txt          # Python dependencies required for Stage 1
+├── .env.example              # Environment variables template
+├── .gitignore                # Git ignore rules for Python, cache, and secrets
+├── requirements.txt          # Python dependencies
 └── README.md                 # Project documentation
 ```
+
 
 ---
 
@@ -73,11 +70,16 @@ You can specify a different DeepFace model (default is `Facenet`):
 python src/face_module.py test_images/your_photo.jpg --model Facenet
 ```
 
+### Run Stage 2: Web / Social Media Search
+```bash
+python src/search_module.py test_images/my_public_photo.jpg
+```
+
 ---
 
 ## Expected Output
 
-### Success (Face Detected):
+### Stage 1: Face Identification
 ```text
 ============================================================
  HH Goa 2026 - Stage 1: Face Identification 
@@ -93,13 +95,34 @@ python src/face_module.py test_images/your_photo.jpg --model Facenet
 ============================================================
 ```
 
-### Failure (No Face Detected or Image Missing):
+### Stage 2: Web & Social Media Search
 ```text
-[ERROR] Face detection failed: No face detected in 'test_images/landscape.jpg'.
-============================================================
-[RESULT] Face identification failed. Please check the errors above.
-============================================================
+======================================================================
+ HH Goa 2026 - Stage 2: Web / Social Media Search 
+======================================================================
+[INFO] Uploading 'test_images/my_public_photo.jpg' temporarily to ImgBB...
+[SUCCESS] Image uploaded successfully to ImgBB.
+[INFO] Public Image URL: https://i.ibb.co/nMv1YCrH/my-public-photo.png
+[INFO] Querying SerpApi Google Lens engine for visual matches...
+[SUCCESS] Google Lens search completed successfully.
+[SUCCESS] Extracted 60 total visual matches from Google Lens.
+[SUCCESS] Found 16 social media match(es).
+======================================================================
+[RESULT] Overall Status: SUCCESS
+[RESULT] Target Image: test_images/my_public_photo.jpg
+[RESULT] Hosted Image URL: https://i.ibb.co/nMv1YCrH/my-public-photo.png
+[RESULT] Total Visual Matches: 60
+[RESULT] Social Media Matches: 16
+----------------------------------------------------------------------
+[RESULT] BEST SOCIAL MEDIA MATCH:
+  * Platform : Instagram
+  * Title    : Hair has been listening to me a lil!! Love this top from ...
+  * Link     : https://www.instagram.com/p/DcI8m8Ak7Ad/
+  * Source   : Instagram
+  * Position : #1
+----------------------------------------------------------------------
 ```
+
 
 ---
 
