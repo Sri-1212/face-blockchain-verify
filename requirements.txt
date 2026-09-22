@@ -18,3 +18,7 @@ requests>=2.31.0
 # Environment variable management (.env loader)
 python-dotenv>=1.0.0
 
+# Web UI Backend Requirements
+Flask>=3.0.0
+flask-cors>=4.0.0
+
